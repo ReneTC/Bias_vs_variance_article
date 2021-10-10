@@ -1,5 +1,5 @@
-# The Bias-Variance tradeoff - being too smart is dumb.
-So maybe the title is a little bit clickbaity, I'm sorry but the concept is really important if you ever want to do something useful in machine learning.
+# The Bias-Variance tradeoff - why being too smart is dumb.
+So maybe the title is a little bit clickbaity, I'm sorry - but the concept is important if you ever want to do something useful in machine learning.
 
 ## Supervised learning
 Right so i said it was important in machine learning so let's just discuss machine learning for one second before moving on with the bias versus variance trade-off.
@@ -57,12 +57,39 @@ Let's use machine learning to learn/estimate this function. We team up with a do
 
 So this is our data set as I said earlier we'll split the data set into a training set and a test set.
 
-So now I'll try to fit this with two different polynomials first a zero degree polynomial so just a number and then a 5th degree polynomial and now it's time to measure how good we performed so we'll measure the error of the test set so that's the average distance to the test points it turns out the 0th degree polynomial is highly highly biased and this means that this machine learning model has underfit it was not able to capture the patterns and the 50 degree polynomial was highly highly variant it fitted too well on the noise the data is of course highly spread out like the variance is really really high the model is over fit it captured the noise in the data set we must control the bias and the variance so now we will try to vary the degree of the polynomial in order to vary the bias and the variance so you can also say that you model the complexity of the model the higher degree polynomials we have the more learnable parameters we have so this essentially what we're doing we are adjusting the complexity of the model in order to adjust the bias and variance by adjusting the complexity the polynomial degree so above I'm showing you the bias and the variance and the total error given by this equation turns out we have found an optimal value for the bias and variance right here that's the lowest error of the test set it wasn't able to find the correct second degree polynomial but we also had a very very small data set overfit means you have a low error on the training set but a high error on the test set underfit means you have a high error on the training set and a high error on the test set as well
+So now I'll try to fit this with two different polynomials first a zero degree polynomial - so just a number.
+
+And then a 5th degree polynomial.
+
+Now it's time to measure how good we performed so we'll measure the error of the test set so that's the average distance to the test points.
+
+It turns out the 0th degree polynomial is highly highly biased and this means that this machine learning model has underfit it was not able to capture the patterns in the data.
+
+And the fifth degree polynomial was highly highly variant it fitted too well on the noise the data, therefore the prediction are highly spread. The model is over-fit.
+
+We must control the bias and the variance in order to make a good machine learning model. Therefore we will now we will try to vary the degree of the polynomial in order to vary the bias and the variance. In other words, we model the complexity of the model; the higher degree polynomials we have the more learnable parameters we have.
+
+So above I'm showing you the bias and the variance and the total error given by this equation turns out we have found an optimal value for the bias and variance right here that's the lowest error of the test set it wasn't able to find the correct second degree polynomial but we also had a very very small data-set.
+
+Overfit means you have a low error on the training set but a high error on the test set.
+Underfit means you have a high error on the training set and a high error on the test set as well
 
 
 ## Weird example
-it sounds so weird we'll need to control or maybe even introduce some fires or some variants in order to get a low generalization error if the model is not sophisticated enough it doesn't have enough complexity enough learnable parameters
+It sounds so weird we'll need to control or maybe even introduce some bias or some variance in order to get a low generalization error.
 
-seven
+If the model is not sophisticated enough it doesn't have high enough complexity / enough learnable parameters
 
-seven uh seven .. Ff the model is too clever too complex it has too many learnable parameters it's going to see all the noise in the data set and it will find the wrong patterns. hmm wait a minute this paper is slightly bent over here this is a clearly indication that the answer cannot be 4 this must be 5 perhaps somewhere in between there is some good balance between being too dumb and too smart. it's 10. making a model dumber is called regularization and i showed you that by reducing the polynomial degrees when using regularization in a neural network it's called dropout or optimizing via brain damage so we just simply remove connections between neurons to make it dumber you can also regularize a decision tree by pruning there you have it a mathematical relationship showing you why it is a good idea to find a balance between underthinking and overthinking and now you can make a better machine learning model this video was brought to you by very generous patrons thank you very much for the help help me produce more science content and become my patreon or check out my science gifts they are available as nfts
+If the model is too clever too complex it has too many learnable parameters it's going to see all the noise in the data set and it will find the wrong patterns.
+
+Somewhere in between there is some good balance between being too dumb and too smart.
+
+Making a model dumber is called regularization and i showed you that by reducing the polynomial degrees in a polymoial fit.
+
+When using regularization in a neural network it's called dropout or optimizing via brain damage so we just simply remove connections between neurons to make it dumber.
+
+You can also regularize a decision tree by pruning.
+
+There you have it a mathematical relationship showing you why it is a good idea to find a balance between underthinking and overthinking! And now you can make a better machine learning model.
+
+Help me produce more science content by becoming my patreon or explore my science gifs that are aviable as NFT's. Thank you!
