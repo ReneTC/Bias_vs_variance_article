@@ -1,10 +1,12 @@
 # The Bias-Variance tradeoff - why being too smart is dumb.
-So maybe the title is a little bit clickbaity, I'm sorry - but the concept is important if you ever want to do something useful in machine learning.
+So maybe the title is a little clickbaity, I'm sorry - but the concept is important if you ever want to do something useful in machine learning.
 
 ## Supervised learning
-Right so i said it was important in machine learning so let's just discuss machine learning for one second before moving on with the bias versus variance trade-off.
+Right so I said it was important in machine learning, so let's just discuss machine learning for one second before moving on with the bias versus variance trade-off.
 
-So when doing supervised learning the idea is to learn to take some input, and predict the correct output.
+When doing supervised learning the idea is to learn to take some input, and predict the correct output.
+
+
 
 And one example of this is to take a handwritten image of a number and then get the machine to recognize what number it is - So learning to read numbers!
 
@@ -12,17 +14,17 @@ You must prepare sufficient data examples where one data point is an example of 
 
 So you're giving the computer the answers.
 
-Let's represent a data set with a grey cube. You must prepare enough of those examples in the data set.
+Let's represent a data set with a gray cube. You must prepare enough of those examples in the data set.
 
 You then feed the machine learning these data points and just keep on tweaking the parameters in the machine learning model until it can correctly take an image and classify it correctly -kind of like a teacher to student scenario where the teacher is providing examples and the co responding correct answer.
 
 So after we have done tweaking the machine we take the data points and measure how good it is - like how often do you correctly classify an image - it turns out if you have given enough data examples and the model is sufficiently complex the error will go to absolutely zero.
 
-It will never classify an image wrong! This seems all well and good right?  The error is zero so we should be done right? .. well no .. it's not good actually, we have used the same training examples for training and testing and that's kind of like student going to an exam where the students are already seen the question and the answers.
+It will never classify an image wrong! This seems all well and good, right?  The error is zero, so we should be done, right? .. Well no .. It's not good actually, we have used the same training examples for training and testing and that's kind of like student going to an exam where the students are already seen the question and the answers.
 
 So the machine learning model could have just remembered the answers and not learned anything at all.
 
-Therefore we must go back and then we take this data set and then we split it up.
+Therefore, we must go back, and then we take the data set and then we split it up.
 
 We only use one set the "training set" for training the algorithm and then we use the other set for testing it, the so-called "test-set" - it should be called an exam set!
 
@@ -41,7 +43,7 @@ Now comes in one try of estimating y and that's called of course called y hat. S
 
 Now comes in another approximation and this approximations guesses is spread everywhere around the target and this is of course the variance! this is the equation for the variance it doesn't take into account the actual answer it just measures how spread out the data points are relative to each other.
 
-So that was the two examples where one exam was really biased and one example was highly variant and so an actual attempt would consist of both errors so there will be some some spread in the position and there will be some bias.
+So that was the two examples where one exam was really biased and one example was highly variant and so an actual attempt would consist of both errors so there will be some spread in the position and there will be some bias.
 
 When you make a machine learning model you must try to balance how much bias you have and how much variance you have and somewhere in between there is an optimal balance.
 
@@ -69,7 +71,7 @@ And the fifth degree polynomial was highly highly variant it fitted too well on 
 
 We must control the bias and the variance in order to make a good machine learning model. Therefore we will now we will try to vary the degree of the polynomial in order to vary the bias and the variance. In other words, we model the complexity of the model; the higher degree polynomials we have the more learnable parameters we have.
 
-So above I'm showing you the bias and the variance and the total error given by this equation turns out we have found an optimal value for the bias and variance right here that's the lowest error of the test set it wasn't able to find the correct second degree polynomial but we also had a very very small data-set.
+So above I'm showing you the bias and the variance and the total error given by this equation turns out we have found an optimal value for the bias and variance right here that's the lowest error of the test set it wasn't able to find the correct second degree polynomial but we also had a very small data-set.
 
 Overfit means you have a low error on the training set but a high error on the test set.
 Underfit means you have a high error on the training set and a high error on the test set as well
@@ -84,7 +86,7 @@ If the model is too clever too complex it has too many learnable parameters it's
 
 Somewhere in between there is some good balance between being too dumb and too smart.
 
-Making a model dumber is called regularization and i showed you that by reducing the polynomial degrees in a polymoial fit.
+Making a model dumber is called regularization and i showed you that by reducing the polynomial degrees in a polynomial fit.
 
 When using regularization in a neural network it's called dropout or optimizing via brain damage so we just simply remove connections between neurons to make it dumber.
 
