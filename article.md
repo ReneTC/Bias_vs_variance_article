@@ -6,36 +6,52 @@ Right so I said it was important in machine learning, so let's just discuss mach
 
 When doing supervised learning the idea is to learn to take some input, and predict the correct output.
 
+<p align="center"><img src="src/2_mnist/input_output.gif"></p>
 
+One example of this task is to take a handwritten image of a number and then get the machine to recognize what number it is.
 
-And one example of this is to take a handwritten image of a number and then get the machine to recognize what number it is - So learning to read numbers!
+<p align="center"><img src="src/2_mnist/input_output_number.gif"></p>
 
-You must prepare sufficient data examples where one data point is an example of an input and the desired output.
+You must prepare sufficient data examples for the computer to learn. One data point (represented below with a gray cube) is the input and the output. The dataset must contains multiple examples of this, for a good machine learning model.
 
-So you're giving the computer the answers.
+<p align="center"><img src="src/2_mnist/dataset/dataset149.png"></p>
 
-Let's represent a data set with a gray cube. You must prepare enough of those examples in the data set.
+So you're giving the computer the thing to learn and the answer.
 
-You then feed the machine learning these data points and just keep on tweaking the parameters in the machine learning model until it can correctly take an image and classify it correctly -kind of like a teacher to student scenario where the teacher is providing examples and the co responding correct answer.
+You then train the model by continuously feeding the machine learning these data points and just keep on tweaking the parameters in the machine learning model until it can correctly take an image and classify it correctly.
 
-So after we have done tweaking the machine we take the data points and measure how good it is - like how often do you correctly classify an image - it turns out if you have given enough data examples and the model is sufficiently complex the error will go to absolutely zero.
+<p align="center"><img src="src/2_mnist/feed_dataset.gif"></p>
 
-It will never classify an image wrong! This seems all well and good, right?  The error is zero, so we should be done, right? .. Well no .. It's not good actually, we have used the same training examples for training and testing and that's kind of like student going to an exam where the students are already seen the question and the answers.
+This is kind of like a teacher to student scenario where the teacher is providing examples and the corresponding correct answer.
+
+<p align="center"><img src="src/class.png"></p>
+
+After we are done tweaking the machine, we take the data points and measure how good it is. In other words, we measure how often the model correctly classify an image - it turns out, if you have given enough data examples and the model is sufficiently complex the error will go to absolutely zero.
+
+<p align="center"><img src="src/9_pol_example/train_error_graph_theory.gif"></p>
+
+This mean, the model will never classify an image wrong! This seems all well and good, right?  The error is zero, so we should be done, right? .. Well no .. It's not good actually, we have used the same training examples for training and testing and that's kind of like student going to an exam where the students are already seen the question and the answers.
 
 So the machine learning model could have just remembered the answers and not learned anything at all.
 
-Therefore, we must go back, and then we take the data set and then we split it up.
+Therefore, we must go back, and the take the data set and then we split it up.
+
+<p align="center"><img src="src/2_mnist/data_set_split.gif"></p>
 
 We only use one set the "training set" for training the algorithm and then we use the other set for testing it, the so-called "test-set" - it should be called an exam set!
 
-This test-set we will check how well it performs once we are done training the model. So this error on the unseen test-set is the golden measurement for checking our machine learning model.
+This test-set we will check how well it performs once we are done training the model. So this error on the unseen test-set is the golden measurement for checking our machine learning model. And it turns, if we adjust the complexity this time, the error on the test set will suddenly increase again after dropping. It looks like this:
 
-The theoretical value of the test set it is higher than the error of the training set. We will see why soon.
+<p align="center"><img src="src/9_pol_example/train_error_graph_theory.gif"></p>
 
-but there exists some optimal balance between model complexity and low error on the test set. It turns out model complexity is related to bias and variance. We will see that soon!
+You can see there exists some optimal balance between model complexity and low error on the test set. It turns out model complexity is related to bias and variance. We will see that soon too! It is related to the bias and variance.
 
 ## Bias and variance decomposition
-But first the error can be decomposed into three things the bias the variance and the noise but we can't get rid of the noise so let's ignore that why can you decompose the error into bias and variance let me give you an example
+The error can be decomposed into three things the bias the variance and the noise.
+
+$$ \text{Error} = \text{Bias}(\hat{y})^2 + \text{Var}(\hat{y}) + \text{Noise}$$
+
+But we can't get rid of the noise so let's ignore that why can you decompose the error into bias and variance let me give you an example
 
 Let's make an algorithm which goal is just to learn to output the number 10 yeah right so that's really really easy. The number 10 is called the target function. So that's called y.
 
