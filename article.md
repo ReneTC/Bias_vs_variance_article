@@ -51,15 +51,36 @@ The error can be decomposed into three things the bias the variance and the nois
 
 $$ \text{Error} = \text{Bias}(\hat{y})^2 + \text{Var}(\hat{y}) + \text{Noise}$$
 
-But we can't get rid of the noise so let's ignore that why can you decompose the error into bias and variance let me give you an example
+But we can't get rid of the noise so let's ignore that.
 
-Let's make an algorithm which goal is just to learn to output the number 10 yeah right so that's really really easy. The number 10 is called the target function. So that's called y.
+Let's see why  can you decompose the error into bias and variance let me give you an example
 
-Now comes in one try of estimating y and that's called of course called y hat. So that's our estimate of the target function.  And it turns out this current estimate is that it is always kind of off the target and that's called the bias it is the true value minus the expectation value and it measures how often we are consistently wrong right so that was one bad estimation of hitting the number 10.
+Let's make an algorithm which goal is just to learn to output the number 10 yeah right so that's really really easy. The number 10 is the called the target function $y$
 
-Now comes in another approximation and this approximations guesses is spread everywhere around the target and this is of course the variance! this is the equation for the variance it doesn't take into account the actual answer it just measures how spread out the data points are relative to each other.
+
+<p align="center"><img src="src/3_bias_variance_decompose/intro.gif"></p>
+
+Now comes in one try of estimating $y$ and that's called $ \hat{y} $.
+It turns out this current estimate is that it is always systematically of off the target and that's called the bias.
+
+$$\operatorname{Bias}(\hat{y})=y-E[\hat{y}]$$
+
+It is the true value minus the expectation value and it measures how often we are consistently wrong right so that was one bad estimation of hitting the number 10.
+
+Now comes in another approximation and this approximations guesses is spread everywhere around the target and this is of course the variance!
+
+<p align="center"><img src="src/3_bias_variance_decompose/thrower_var/thrower_var069.png"></p>
+
+this is the equation for the variance:
+$$
+\operatorname{Var}(\hat{y})=E\left[(E[\hat{y}]-\hat{y})^{2}\right]
+$$
+
+it doesn't take into account the actual answer it just measures how spread out the data points are relative to each other.
 
 So that was the two examples where one exam was really biased and one example was highly variant and so an actual attempt would consist of both errors so there will be some spread in the position and there will be some bias.
+
+<p align="center"><img src="src/3_bias_variance_decompose/thrower_both.gif"></p>
 
 When you make a machine learning model you must try to balance how much bias you have and how much variance you have and somewhere in between there is an optimal balance.
 
