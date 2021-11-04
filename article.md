@@ -84,21 +84,39 @@ So that was the two examples where one exam was really biased and one example wa
 
 When you make a machine learning model you must try to balance how much bias you have and how much variance you have and somewhere in between there is an optimal balance.
 
-Blue is the bias and purple is the variance. Adjusting each other leads to an optimal balance and up to the lowest error but up until now i haven't shown you what model complexity is and how it relates to bias and variance let's do that with yet another example.
+Blue is the bias and purple is the variance. Adjusting each other leads to an optimal balance and up to the lowest error.
+
+<p align="center"><img src="src/9_pol_example/train_error_graph_theory_val_vb.gif"></p>
+
+But up until now i haven't shown you what model complexity is and how it relates to bias and variance let's do that with yet another example.
 
 ## Complexity trade-off
 
-Okay here is an example that we could be trying to learn with machine learning say that this is an absolutely true function for hours in the sun and the corresponding cell damage on the skin.
+To show you the complexity trade-off with an example, imagine that we are  trying to learn hours in the sun and the corresponding cell damage on the skin with machine learning. Imagine below the true function we would like to find looks like this:
 
-Off course this is a dream scenario to know a true function like this - in reality we never know this relation, this black line here. Let's pretend it is a second degree polynomial with these values.
+<p align="center"><img src="src/9_pol_example/draw_true_fuction.gif"></p>
 
-Let's use machine learning to learn/estimate this function. We team up with a doctor that measures some patients and get these data points. The data points can be exactly on the true line because of noise and randomness. But at least we got some data points.
+Off course this is a dream scenario to know a true function we are trying to find - in reality we never know this. Let's pretend it is a second degree polynomial with these values.
+
+$$ f(x) = 0.2 x^2 + 1.5x + 1$$
+
+Where $f(x)$ is cell damage and $x$ is hours in the sun. Let's use machine learning to learn/estimate this function. We team up with a doctor that measures some patients and get these data points.
+
+The data points can be exactly on the true line because of noise and randomness. But at least we got some data points.
+
+<p align="center"><img src="src/9_pol_example/draw_data_points/draw_data_points000.png"></p>
 
 So this is our data set as I said earlier we'll split the data set into a training set and a test set.
 
-So now I'll try to fit this with two different polynomials first a zero degree polynomial - so just a number.
+<p align="center"><img src="src/9_pol_example/draw_data_points/draw_data_points069.png"></p>
 
-And then a 5th degree polynomial.
+So now I'll try to fit this with two different polynomials first a zero degree polynomial $f(x) = a_0$ $ so just a number. this is the result:
+
+
+
+And then a 5th degree polynomial $f(x) =  a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0$. This is the reuslt:
+
+<p align="center"><img src="src/9_pol_example/fitting_2_poly.gif"></p>
 
 Now it's time to measure how good we performed so we'll measure the error of the test set so that's the average distance to the test points.
 
