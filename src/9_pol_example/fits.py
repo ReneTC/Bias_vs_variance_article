@@ -23,16 +23,16 @@ for i in range(1,10):
 fig, ax = plt.subplots( nrows=1, ncols=1 )
 plt.ylim([0,40])
 plt.plot(x,y_true(x),color="k")
-# plt.plot(x_train,y_train,'ok')
-plt.plot(x_val,y_val,'or')
+plt.plot(x_train,y_train,'ok')
+plt.plot(x_val,y_val,'o', color=get_color(0.5))
 
 # dumb
 plt.plot(x,np.poly1d(get_av_fitted(0))(x),get_color(0.7))
-plt.plot(x_val,np.poly1d(get_av_fitted(0))(x_val),'o',color=get_color(0.7))
+#plt.plot(x_val,np.poly1d(get_av_fitted(0))(x_val),'o',color=get_color(0.7))
 
 # too clever
 plt.plot(x,np.poly1d(get_av_fitted(5))(x),get_color(0.9))
-plt.plot(x_val,np.poly1d(get_av_fitted(5))(x_val),'o',color=get_color(0.9))
+#plt.plot(x_val,np.poly1d(get_av_fitted(5))(x_val),'o',color=get_color(0.9))
 
 expeted = np.mean(y_true(x_val))
 bias1 = np.mean(np.poly1d(get_av_fitted(0))(x_val))-expeted
@@ -41,10 +41,10 @@ variance1 = np.var(np.poly1d(get_av_fitted(0))(x_val))
 bias2 = np.mean(np.poly1d(get_av_fitted(5))(x_val))-expeted
 variance2 = np.var(np.poly1d(get_av_fitted(5))(x_val))
 
-plt.text(4,25,"bias: "+str(np.around(bias1**2)) + ", var: "+str(np.around(variance1)),color=get_color(0.7))
-plt.text(4,30,"bias: "+str(np.around(bias2**2)) + ", var: "+str(np.around(variance2)),color=get_color(0.9))
+plt.text(4,25,"bias: "+str(np.around(bias1**2)) +  ", var: "+str(np.around(variance1)),color=get_color(0.7),size=20)
+plt.text(4,30,"bias: "+str(np.around(bias2**2)) + " " +", var: "+str(np.around(variance2)),color=get_color(0.9),size=20)
 
-# plt.savefig('over_under.png')
+plt.savefig('over_under3.png')
 
 
 # %% animation one draw true function
@@ -117,7 +117,7 @@ plt.text(4,30,"bias: "+str(np.around(bias2**2)) + ", var: "+str(np.around(varian
 # plt.tight_layout()
 # plt.savefig("with_test.png")
 
-
+'''
 import matplotlib
 fig, ax = plt.subplots( nrows=1, ncols=1 )
 plt.ylim([0,40])
@@ -131,3 +131,4 @@ plt.plot(x,np.poly1d(get_av_fitted(5))(x),get_color(0.9))
 # plt.plot(x,np.poly1d(get_av_fitted(0))(x),get_color(0.7))
 plt.tight_layout()
 plt.savefig('Hej2.png')
+'''

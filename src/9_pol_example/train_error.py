@@ -16,9 +16,10 @@ for i in the_range:
     plt.plot(x,np.poly1d(get_av_fitted(i))(x),color = col)
     error = np.sum(((y_train - np.poly1d(get_av_fitted(i))(x_train))**2))
     the_error.append(error)
+
+    plt.title(str(np.format_float_positional(i,precision=3)))
     plt.savefig('train_error_02/train_error_02'+str(j).zfill(3)+'.png', bbox_inches='tight')
     j = j+1
-the_error
 j = 0
 # for i in range(0,len(the_range)):
 #     fig, ax = plt.subplots( nrows=1, ncols=1 )

@@ -110,17 +110,18 @@ So this is our data set as I said earlier we'll split the data set into a traini
 
 <p align="center"><img src="src/9_pol_example/draw_data_points/draw_data_points069.png"></p>
 
-So now I'll try to fit this with two different polynomials first a zero degree polynomial $f(x) = a_0$ $ so just a number. this is the result:
-
-
-
-And then a 5th degree polynomial $f(x) =  a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0$. This is the reuslt:
+So now I'll try to fit this with two different polynomials first a zero degree polynomial $f(x) = a_0$ so just a number. Let's mark the fit with blue. I'll also fit a  5th degree polynomial $f(x) =  a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0$ marked as purple. This is the result.
 
 <p align="center"><img src="src/9_pol_example/fitting_2_poly.gif"></p>
 
-Now it's time to measure how good we performed so we'll measure the error of the test set so that's the average distance to the test points.
+Now it's time to measure how good we performed so we'll measure the error of the test set - that's the average distance to the test points.
 
-It turns out the 0th degree polynomial is highly highly biased and this means that this machine learning model has underfit it was not able to capture the patterns in the data.
+Blue 0 degree fit:
+0 Variace,
+51 bias.
+
+
+It turns out the 0th degree polynomial is highly highly biased. and this means that this machine learning model has underfit it was not able to capture the patterns in the data.
 
 And the fifth degree polynomial was highly highly variant it fitted too well on the noise the data, therefore the prediction are highly spread. The model is over-fit.
 
@@ -150,3 +151,11 @@ You can also regularize a decision tree by pruning.
 There you have it a mathematical relationship showing you why it is a good idea to find a balance between underthinking and overthinking! And now you can make a better machine learning model.
 
 Help me produce more science content by becoming my patreon or explore my science gifs that are aviable as NFT's. Thank you!
+
+
+
+
+<p align="center"><img src="src/9_pol_example/train_error_02.gif"></p>
+<p align="center"><img src="src/9_pol_example/over_under3.png"></p>
+<p align="center"><img src="src/9_pol_example/yes.png"></p>
+<p align="center"><img src="src/9_pol_example/res.gif"></p>
