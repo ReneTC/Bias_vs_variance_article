@@ -17,7 +17,7 @@ for i in the_range:
     error = np.sum(((y_train - np.poly1d(get_av_fitted(i))(x_train))**2))
     the_error.append(error)
 
-    plt.title(str(np.format_float_positional(i,precision=3)))
+    plt.title("Polynomial degree: " + str(np.format_float_positional(i,precision=3)))
     plt.savefig('train_error_02/train_error_02'+str(j).zfill(3)+'.png', bbox_inches='tight')
     j = j+1
 j = 0
