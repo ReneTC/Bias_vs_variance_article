@@ -1,88 +1,81 @@
-# The Bias-Variance tradeoff - why being too smart is dumb.
-So maybe the title is a little clickbaity, I'm sorry - but the concept is important if you ever want to do something useful in machine learning.
+# The Bias-Variance Tradeoff - Why Being Too Smart is Dumb
+So maybe the title is a little clickbaity, I'm sorry, but the concept is important if you ever want to do something useful in machine learning.
 
 ## Supervised learning
-Right so I said it was important in machine learning, so let's just discuss machine learning for one second before moving on with the bias versus variance trade-off.
+To understand the bias-variance tradeoff, let's discuss supervised machine learning for one second before moving on.
 
-When doing supervised learning the idea is to learn to take some input, and predict the correct output.
+When doing supervised learning, the idea is to learn to receive input and predict the correct output.
 
 <p align="center"><img src="src/2_mnist/input_output.gif"></p>
 
-One example of this task is to take a handwritten image of a number and then get the machine to recognize what number it is.
+One example of this task is to take an image of a handwritten number and then get the machine to recognize what number it is.
 
 <p align="center"><img src="src/2_mnist/input_output_number.gif"></p>
 
-You must prepare sufficient data examples for the computer to learn. One data point (represented below with a gray cube) is the input and the output. The dataset must contains multiple examples of this, for a good machine learning model.
+For the computer to learn, you must provide sufficient data examples. One data point is an input and its corresponding output. This is represented below with a gray cube.
 
 <p align="center"><img src="src/2_mnist/dataset/dataset149.png"></p>
 
-So you're giving the computer the thing to learn and the answer.
+The dataset must contains multiple data points, to achieve a good machine learning model.
 
-You then train the model by continuously feeding the machine learning these data points and just keep on tweaking the parameters in the machine learning model until it can correctly take an image and classify it correctly.
+You then train the model by continuously feeding the machine these data points and continue tweaking the parameters of the machine learning model to learn from the given examples.
 
 <p align="center"><img src="src/2_mnist/feed_dataset.gif"></p>
 
-This is kind of like a teacher to student scenario where the teacher is providing examples and the corresponding correct answer.
+This is kind of like a teacher-to-student scenario where the teacher provides questions and the corresponding correct answer.
 
 <p align="center"><img src="src/class.png"></p>
 
-After we are done tweaking the machine, we take the data points and measure how good it is. In other words, we measure how often the model correctly classify an image - it turns out, if you have given enough data examples and the model is sufficiently complex the error will go to absolutely zero.
+After we are done tweaking the model, we take the data points and measure the performance of the model. In other words, we count how often the model correctly classifies an image. It turns out, if you have provided enough data examples and the model is sufficiently complex, the error will go to zero.
 
 <p align="center"><img src="src/9_pol_example/train_error_graph_theory.gif"></p>
 
-This mean, the model will never classify an image wrong! This seems all well and good, right?  The error is zero, so we should be done, right? .. Well no .. It's not good actually, we have used the same training examples for training and testing and that's kind of like student going to an exam where the students are already seen the question and the answers.
+An error of zero seems all well and good, right?  The error is zero, so we should be done, right? .. Well no .. It's not good actually because now we have used the same training examples for training and testing. That's kind of like a student going to an exam with questions the teacher has already answered.
 
-So the machine learning model could have just remembered the answers and not learned anything at all.
+So the machine learning model could have just memorized the answers and not learned anything at all.
 
-Therefore, we must go back, and the take the data set and then we split it up.
+Therefore, we must go back and split up the dataset into a training set and a test set.
 
 <p align="center"><img src="src/2_mnist/data_set_split.gif"></p>
 
-We only use one set the "training set" for training the algorithm and then we use the other set for testing it, the so-called "test-set" - it should be called an exam set!
+We only use one set, the *training set*, for training the algorithm and the other set for testing, the so-called *test set*. Now we have an appropriate data set for the model - data it has never seen before!
 
-This test-set we will check how well it performs once we are done training the model. So this error on the unseen test-set is the golden measurement for checking our machine learning model. And it turns, if we adjust the complexity this time, the error on the test set will suddenly increase again after dropping. It looks like this:
+With the test set, we will check how well the model performs once we are done training. So the error on the unseen test set is the golden measurement for checking our machine learning model. And it turns out if we adjust the complexity this time, the error on the test set (green line) will suddenly increase again after dropping. It looks like this:
+<!-- TODO overvej legend -->
+<p align="center"><img src="src/9_pol_example/train_error_graph_theory_val.gif"></p>
 
-<p align="center"><img src="src/9_pol_example/train_error_graph_theory.gif"></p>
+As seen from the graph, an optimal balance between model complexity and low error on the test set exists. It turns out, model complexity is related to bias and variance. We will see that soon too!
 
-You can see there exists some optimal balance between model complexity and low error on the test set. It turns out model complexity is related to bias and variance. We will see that soon too! It is related to the bias and variance.
-
-## Bias and variance decomposition
-The error can be decomposed into three things the bias the variance and the noise.
+## Bias and Variance Decomposition
+The error can be decomposed into three things; the bias, the variance, and the noise.
 
 $$ \text{Error} = \text{Bias}(\hat{y})^2 + \text{Var}(\hat{y}) + \text{Noise}$$
 
-But we can't get rid of the noise so let's ignore that.
+But we can't get rid of the noise so let's ignore that. Let's see why you can decompose the error into bias and variance.
 
-Let's see why  can you decompose the error into bias and variance let me give you an example
-
-Let's make an algorithm which goal is just to learn to output the number 10 yeah right so that's really really easy. The number 10 is the called the target function $y$
-
+In the following example, a machine learning model is trying to learn to output the number 10. Yeah right, so that's really easy. In this example, the number 10 is called the target function $y$. When a machine learning model tries to estimate $y$, the estimate is called $ \hat{y} $.
 
 <p align="center"><img src="src/3_bias_variance_decompose/intro.gif"></p>
 
-Now comes in one try of estimating $y$ and that's called $ \hat{y} $.
-It turns out this current estimate is that it is always systematically of off the target and that's called the bias.
+Now comes in a machine learning model, trying to guess/hit the number 10. It turns out this current model is always systematically of off the target.
 
-$$\operatorname{Bias}(\hat{y})=y-E[\hat{y}]$$
+<p align="center"><img src="src/3_bias_variance_decompose/thrower_bias.gif"></p>
 
-It is the true value minus the expectation value and it measures how often we are consistently wrong right so that was one bad estimation of hitting the number 10.
+Being systematically of target is called the bias and is given by: $\operatorname{Bias}(\hat{y})=y-E[\hat{y}]$. It is the true value minus the expectation value and it measures how often we are consistently wrong right so that was one bad estimation of hitting the number 10.
 
-Now comes in another approximation and this approximations guesses is spread everywhere around the target and this is of course the variance!
+Now comes in another machine learning model and its guesses is spread everywhere around the target!
 
-<p align="center"><img src="src/3_bias_variance_decompose/thrower_var/thrower_var069.png"></p>
+<p align="center"><img src="src/3_bias_variance_decompose/thrower_var.gif"></p>
 
-this is the equation for the variance:
-$$
+Spread is off course a measure of varaince. Variance is given by: $
 \operatorname{Var}(\hat{y})=E\left[(E[\hat{y}]-\hat{y})^{2}\right]
-$$
+$. The equation doesn't take into account the actual answer it just measures how spread out the data points are relative to each other.
 
-it doesn't take into account the actual answer it just measures how spread out the data points are relative to each other.
-
-So that was the two examples where one exam was really biased and one example was highly variant and so an actual attempt would consist of both errors so there will be some spread in the position and there will be some bias.
+So that was the two examples where one exam was really biased and one example was highly variant. An actual machine learnig models gueeses would consist of both bias and variance:
 
 <p align="center"><img src="src/3_bias_variance_decompose/thrower_both.gif"></p>
 
-When you make a machine learning model you must try to balance how much bias you have and how much variance you have and somewhere in between there is an optimal balance.
+When you make a machine learning model you must try to balance how much bias you have and how much variance you have in the error. Somewhere in between there is an optimal balance.
 
 Blue is the bias and purple is the variance. Adjusting each other leads to an optimal balance and up to the lowest error.
 
