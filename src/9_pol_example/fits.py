@@ -44,8 +44,8 @@ variance2 = np.var(np.poly1d(get_av_fitted(5))(x_val))
 plt.text(4,25,"bias: "+str(np.around(bias1**2)) +  ", var: "+str(np.around(variance1)),color=get_color(0.7),size=20)
 plt.text(4,30,"bias: "+str(np.around(bias2**2)) + " " +", var: "+str(np.around(variance2)),color=get_color(0.9),size=20)
 
-plt.savefig('over_under3.png')
-
+# plt.savefig('over_under3.png')
+#
 
 # %% animation one draw true function
 # j = 0
@@ -82,25 +82,26 @@ plt.savefig('over_under3.png')
 #     j = j+1
 
 # %% animation fit 2  poly
-# j = 0
-# def ReLU(x):
-#     return x * (x > 0)
-#
-# import matplotlib
-# matplotlib.use('Agg')
-# for i in range(0,200):
-#     fig, ax = plt.subplots( nrows=1, ncols=1 )
-#     plt.ylim([0,40])
-#     plt.xlim([0,10])
-#     plt.xlabel("Hours in sun")
-#     plt.ylabel("Cell damage")
-#     plt.plot(x,y_true(x),color="k")
-#     plt.plot(x_train,y_train,'ok')
-#     plt.plot(x[0:ReLU(i-100)+1],np.poly1d(get_av_fitted(5))(x)[0:ReLU(i-100)+1],get_color(0.9))
-#     plt.plot(x[0:i+1],np.poly1d(get_av_fitted(0))(x)[0:i+1],get_color(0.7))
-#     plt.tight_layout()
-#     plt.savefig('fitting_2_poly/fitting_2_poly'+str(j).zfill(3)+'.png')
-#     j = j+1
+j = 0
+def ReLU(x):
+    return x * (x > 0)
+
+import matplotlib
+matplotlib.use('Agg')
+for i in range(0,200):
+    fig, ax = plt.subplots( nrows=1, ncols=1 )
+    plt.ylim([0,40])
+    plt.xlim([0,10])
+    plt.xlabel("Hours in sun")
+    plt.ylabel("Cell damage")
+    plt.plot(x,y_true(x),color="k")
+    plt.plot(x_train,y_train,'ok')
+    plt.plot(x[0:ReLU(i-100)+1],np.poly1d(get_av_fitted(5))(x)[0:ReLU(i-100)+1],get_color(0.9), label = "5 Degree")
+    plt.plot(x[0:i+1],np.poly1d(get_av_fitted(0))(x)[0:i+1],get_color(0.7), label = "0 Degree")
+    plt.legend(loc='upper right')
+    plt.tight_layout()
+    plt.savefig('fitt/fitt'+str(j).zfill(3)+'.png')
+    j = j+1
 
 # %% add train set
 # fig, ax = plt.subplots( nrows=1, ncols=1 )

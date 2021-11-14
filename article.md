@@ -90,38 +90,35 @@ Imagine that we are trying to learn hours sunbathed  and the corresponding cell 
 
 <p align="center"><img src="src/9_pol_example/draw_true_fuction.gif"></p>
 
-Off course this is a dream scenario to know a true function we are trying to find - in reality we will never know this. The function I showed you is a second degree polynomial given by $ f(x) = 0.2 x^2 + 1.5x + 1$
+Off course this is a dream scenario to know a true function we are trying to find - in reality we will never know this. The target functio is a second degree polynomial given by $ f(x) = 0.2 x^2 + 1.5x + 1$, were $f(x)$ is cell damage and $x$ is hours in the sun.
 
-Where $f(x)$ is cell damage and $x$ is hours in the sun. Let's use machine learning to learn/estimate this function. We team up with a doctor that measures some patients and get these data points.
-
+Let's use machine learning to learn this function. We team up with a doctor that measures some patients and get us these data points.
 
 <p align="center"><img src="src/9_pol_example/draw_data_points/draw_data_points000.png"></p>
 
-The data points can be exactly on the true line because of noise and randomness. But at least we got some data points.
-
-So this is our data set as I said earlier we'll split the data set into a training set and a test set.
+The data points can't be exactly on the true line because of noise and randomness. So this is our data set as I said earlier we'll split the data set into a training set and a test set. Green will be saved for testing, while we train on the black dots.
 
 <p align="center"><img src="src/9_pol_example/draw_data_points/draw_data_points069.png"></p>
 
-So now I'll try to fit the training set with two different polynomials first a zero degree polynomial $f(x) = a_0$ so just a number. Let's mark the fit with blue. I'll also fit a  5th degree polynomial $f(x) =  a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0$ marked as purple. This is the result.
+So now I'll try to fit the training set with two different polynomials. First a zero degree polynomial, $f(x) = a_0$, so just a number.  I'll also fit a  5th degree polynomial $f(x) =  a_5 x^5 + a_4 x^4 + a_3 x^3 + a_2 x^2 + a_1 x + a_0$. This is the result.
 
-<p align="center"><img src="src/9_pol_example/fitting_2_poly.gif"></p>
+<p align="center"><img src="src/9_pol_example/fitt.gif"></p>
 
 Let's have a look on the bias and variance of these different fits, with respect of the test set (green points).
 
 <p align="center"><img src="src/9_pol_example/over_under3.png"></p>
 
-It turns out the 0th degree polynomial is highly highly biased -this machine learning model has underfit it was not able to capture the patterns in the data. The fifth degree polynomial was highly highly variant - it fitted too well on the noise in the data, therefore the prediction are highly spread. The model is over-fit.
+It turns out the 0th degree polynomial is highly highly biased -this machine learning model has underfit it was not able to capture the patterns in the data. The fifth degree polynomial was highly  variant - it fitted too well on the noise in the data, therefore the prediction are too spread out and the model is over-fit.
 
-So somewhere between a 0 degree fit, and a 5'fth degree fit must be a better function to generalize. Below I will interpolate from 0 to 5 degree polynomial and fit:
+So somewhere between a 0 degree fit, and a 5'fth degree fit must be a better function to generalize. Below I will interpolate from 0 to 5 degree polynomial and fit.
 
 <p align="center"><img src="src/9_pol_example/train_error_02.gif"></p>
 
-Let's see the Variance, Bias and total error for all these fits:
+Let's see the Variance, Bias and total error as a function of model compelxity (degree of polynomial) for all these fits:
 
 <p align="center"><img src="src/9_pol_example/yes.png"></p>
 
-It turns out the best model to generalize was with a complexity around 0.5. You can see where Bias and variance meet, the total error is lowest. The model did not find the true function, $ f(x) = 0.2 x^2 + 1.5x + 1$, but our test and train set size is also very low.
+It turns out the best model to generalize was with a complexity around 0.5. You can see where Bias and variance meet, the total error is lowest. See how the bias drops quickly with model complexity, while the variance increase with model complexity.
 
 You can see we must control the bias and the variance in order to make a good machine learning model, which corresponds to adjusting the complexity of a model. Adjust the complexity also adjusts the models tendency to overfit vs underfit. Overfit means you have a low error on the training set but a high error on the test set. Underfit means you have a high error on the training set and a high error on the test set as well.
 
@@ -129,15 +126,11 @@ You can see we must control the bias and the variance in order to make a good ma
 
 It sounds weird we'll need to control or maybe even introduce some bias or some variance in order to get a low generalization error.
 
-If the model is not sophisticated enough it doesn't have high enough complexity / enough learnable parameters, and the model will underfit.
+If the model is not sophisticated enough it doesn't have high enough complexity / enough learnable parameters to learn, and the model will underfit. On the other side, if the model is too clever / complex it has too many learnable parameters then it's too sensitive to the noise in the data set and it will find the wrong patterns, i.e overfit.
 
-If the model is too clever too complex it has too many learnable parameters it's going to see all the noise in the data set and it will find the wrong patterns, i.e overfit.
+*Somewhere in between overfit and underfit here is some good balance between being too dumb and too smart.*
 
-Somewhere in between overfit and underfit here is some good balance between being too dumb and too smart.
-
-Making a model dumber is called regularization and i showed you that by reducing the polynomial degrees in a polynomial fit.
-
-When using regularization in a neural network it's called dropout or optimizing via brain damage where we just simply remove connections between neurons to make it dumber.
+Making a model dumber is called regularization and i showed you that by reducing the polynomial degrees in a polynomial fit. When using regularization in a neural network it's called dropout or optimizing via brain damage where we just simply remove connections between neurons to make it dumber.
 
 <p align="center"><img src="src/0_draw/nerual.png"></p>
 
