@@ -17,9 +17,10 @@ for i in range(0,len(the_range)):
     plt.xlabel("Complexity")
     plt.ylabel("Error")
     plt.ylim([0,1])
-    plt.plot(the_range,the_val_error,get_color(0.5))
-    plt.plot(the_range[0:i+1],the_bias[0:i+1],get_color(0.7))
-    plt.plot(the_range[0:i+1],the_var[0:i+1],get_color(0.9))
+    plt.plot(the_range,the_val_error,get_color(0.5), label = "Total Error")
+    plt.plot(the_range[0:i+1],the_bias[0:i+1],get_color(0.7), label = "Bias²")
+    plt.plot(the_range[0:i+1],the_var[0:i+1],get_color(0.9), label = "Variance")
+    plt.legend(loc = "upper left")
     plt.tight_layout()
     plt.savefig('train_error_graph_theory_val_vb/train_error_graph_theory_val_vb'+str(j).zfill(3)+'.png')
     j = j+1

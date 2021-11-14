@@ -17,8 +17,9 @@ for i in range(0,len(the_range)):
     plt.xlabel("Complexity")
     plt.ylabel("Error")
     plt.ylim([0,1])
-    plt.plot(the_range,the_error,grey2)
-    plt.plot(the_range[0:i+1],the_val_error[0:i+1],get_color(0.5))
+    plt.plot(the_range,the_error,grey2, label = "Training set error")
+    plt.plot(the_range[0:i+1],the_val_error[0:i+1],get_color(0.5), label = "Test set error")
     plt.tight_layout()
+    plt.legend(loc = "upper left")
     plt.savefig('train_error_graph_theory_val/train_error_graph_theory_val'+str(j).zfill(3)+'.png')
     j = j+1
