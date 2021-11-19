@@ -55,17 +55,17 @@ But we can't get rid of the noise so let's ignore that. Let's see why you can de
 
 In the following example, a machine learning model is trying to learn to output the number 10. In this example, the number 10 is called the target function $y$. When a machine learning model tries to estimate $y$, the estimate is called $ \hat{y} $.
 <!-- TODO lav billedere mindre -->
-<p align="center"><img src="src/3_bias_variance_decompose/intro.gif"></p>
+<p align="center"><img src="src/3_bias_variance_decompose/test/intro_c.gif"></p>
 
 Now comes in a machine learning model, trying to predict the number 10. It turns out, the current model is systematically off target.
 
-<p align="center"><img src="src/3_bias_variance_decompose/thrower_bias.gif"></p>
+<p align="center"><img src="src/3_bias_variance_decompose/test/bias_c.gif"></p>
 
 Being systematically off target is called bias. Bias is given by: $\operatorname{Bias}(\hat{y})=y-E[\hat{y}]$; the true value minus the expectation value and it measures how much we are consistently off.
 
 Now comes in another machine learning model and its predictions are spread everywhere around the target!
 
-<p align="center"><img src="src/3_bias_variance_decompose/thrower_var.gif"></p>
+<p align="center"><img src="src/3_bias_variance_decompose/test/var_c.gif"></p>
 
 Spread is of course a measure of variance. Variance is given by: $
 \operatorname{Var}(\hat{y})=E\left[(E[\hat{y}]-\hat{y})^{2}\right]
@@ -73,7 +73,7 @@ $. This equation doesn't take into account the actual answer it just measures ho
 
 So that was the two examples where the first model was really biased and the second was highly variant. The error of an actual machine learning model would consist of both bias and variance:
 
-<p align="center"><img src="src/3_bias_variance_decompose/thrower_both2.gif"></p>
+<p align="center"><img src="src/3_bias_variance_decompose/test/both_c.gif"></p>
 
 Below is the theoretical error as a function of bias and variance. Adjusting the parameters leads to a minimized error.
 
